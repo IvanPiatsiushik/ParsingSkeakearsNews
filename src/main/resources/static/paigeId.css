@@ -1,0 +1,24 @@
+.body{
+    background-color: #363535;
+}
+.main{
+    background-color: #363535;
+    width: 880px;
+
+    display: block;
+    margin:auto;
+}
+.textAll{
+    color: white;
+    font-size: 20px;
+}
+.textArticle{
+    color: white;
+    font-size: 35px;
+}
+.img{
+   display: block;
+    margin:auto;
+    width: 880px;
+    margin-top: 15px;
+}
