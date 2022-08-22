@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="/static/news.css">
+<link rel="stylesheet" href="/static/pagination.css">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
 <section class="section1">
-        <div th:each="el : ${paiges}"  class="alert alert-info mt-2">
+        <div th:each="el : ${news}"  class="alert alert-info mt-2">
             <div class="containers" >
                 <div class="container1" th:if="${el.id%2==0}">
                     <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
@@ -25,5 +27,25 @@
             </div>
         </div>
     </section>
+
+<section class="pagination">
+    <div th:fragment="pagination">
+        <ul class="pagination_line">
+
+            <th:block th:each="numberPage : ${numbers}">
+                <div class="container_for_numbers">
+                    <li class="page-item" th:if="${numberPage != getNumber }" >
+                        <a class="page-link" th:href="${url + '?page='+ numberPage}" th:text="${numberPage}+1">
+                        </a>
+                    </li>
+
+                    <li class="page-item" th:if="${numberPage == getNumber }" >
+                        <a class="page-link-current" href="#"   th:text="${numberPage}+1" ></a>
+                    </li>
+                </div>
+            </th:block>
+        </ul>
+    </div>
+</section>
 </body>
 </html>

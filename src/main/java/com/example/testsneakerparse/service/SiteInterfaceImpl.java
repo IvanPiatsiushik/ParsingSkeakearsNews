@@ -25,7 +25,7 @@ public class SiteInterfaceImpl implements SiteInterfase {
     private final SiteRepository siteRepository;
 
     public SiteInterfaceImpl( PaigeRepository paigeRepository, SiteRepository siteRepository) {
-        this.paigeRepository = paigeRepository;
+        this.paigeRepository =     paigeRepository;
         this.siteRepository = siteRepository;
     }
 
@@ -37,7 +37,8 @@ public class SiteInterfaceImpl implements SiteInterfase {
 
         for (Element el : elements) {
             List<Site> list1 = siteRepository.findAll();
-            boolean compare = list1.stream().anyMatch(x->x.getNamePaige().equals(el.attr("href")));
+            boolean compare = list1.stream().skip(list1.size()-20).anyMatch(x->x.getNamePaige().equals(el.attr("href")));
+
             if (compare==false){
                 Site site1 = new Site(el.attr("href"));
                 siteRepository.save(site1);

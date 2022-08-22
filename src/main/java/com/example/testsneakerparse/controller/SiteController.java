@@ -2,6 +2,7 @@ package com.example.testsneakerparse.controller;
 
 import com.example.testsneakerparse.entity.Paige;
 import com.example.testsneakerparse.repository.PaigeRepository;
+import com.example.testsneakerparse.service.SiteInterfaceImpl;
 import com.example.testsneakerparse.service.SiteInterfase;
 import com.example.testsneakerparse.entity.Site;
 import com.example.testsneakerparse.repository.SiteRepository;
@@ -14,12 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class SiteController {
@@ -29,25 +33,11 @@ public class SiteController {
     private String nameWebSite = "https://sneakernews.com";
 
     @Autowired
-    private final SiteInterfase siteInterfase;
-    @Autowired
     private final SiteRepository siteRepository;
-    public SiteController(PaigeRepository paigeRepository, SiteInterfase siteInterfase, SiteRepository siteRepository) {
+    public SiteController(PaigeRepository paigeRepository, SiteRepository siteRepository) {
         this.paigeRepository = paigeRepository;
-        this.siteInterfase = siteInterfase;
         this.siteRepository = siteRepository;
     }
-
-    @GetMapping("/site")
-    public String findAllPaige(Model model) throws IOException {
-
-            List<Site> list = siteRepository.findAll();
-            model.addAttribute("allPaige", list);
-            siteInterfase.parsingNamePaige(nameWebSite);
-            siteInterfase.parsingAllPaige();
-        return "site";
-        }
-
         @GetMapping("/paige/{id}")
     public String watchPaige(@PathVariable Long id , Model model){
 
@@ -56,23 +46,25 @@ public class SiteController {
         return "paigeId";
         }
 
-        @GetMapping("/ppp")
-    public String seeAll(Model model){
-
+        @GetMapping("/")
+    public String seeAll(Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
+                         @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException {
+//
+            model.addAttribute("url","http://localhost:3033");
+            model.addAttribute("page",page);
             if (paigeRepository.findAll().size()%2==0){
-                List<Paige> paigeList1 = (List<Paige>) paigeRepository.findAll()
-                        .stream()
-                        .sorted(Comparator.comparing(Paige::getId).reversed())
-                        .collect(Collectors.toList());
-                model.addAttribute("paiges",paigeList1);
+                Page<Paige> newsPage = (Page<Paige>) paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
+                model.addAttribute("news",newsPage);
+                model.addAttribute("numbers", IntStream.range(0,newsPage.getTotalPages()).toArray());
+                model.addAttribute("newsCurrentPageCount",newsPage.getNumberOfElements());
+                model.addAttribute("getNumber",newsPage.getNumber());
             }else {
-                List<Paige> paigeList1 = (List<Paige>) paigeRepository.findAll()
-                        .stream()
-                        .sorted(Comparator.comparing(Paige::getId).reversed())
-                        .skip(1)
-                        .collect(Collectors.toList());
-                model.addAttribute("paiges",paigeList1);
 
+                Page<Paige> newsPage =  paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
+                model.addAttribute("news",newsPage);
+                model.addAttribute("numbers", IntStream.range(0,newsPage.getTotalPages()).toArray());
+                model.addAttribute("newsCurrentPageCount",newsPage.getNumberOfElements());
+                model.addAttribute("getNumber",newsPage.getNumber());
             }
                 return "news";
         }
