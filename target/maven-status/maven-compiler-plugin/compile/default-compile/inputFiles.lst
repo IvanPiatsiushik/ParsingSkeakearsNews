@@ -1,0 +1,10 @@
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/entity/Site.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/config/MvcConfig.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/repository/SiteRepository.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/repository/PaigeRepository.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/service/SiteInterfase.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/service/SiteInterfaceImpl.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/config/WebConfig.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/controller/SiteController.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/TestSneakerParseApplication.java
+/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/entity/Paige.java
