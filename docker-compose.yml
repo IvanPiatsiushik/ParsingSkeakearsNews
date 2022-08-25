@@ -1,1 +1,25 @@
 version: '3'
+services:
+  postgres_database:
+    image: 'postgres'
+    container_name: 'pg_db2'
+    ports:
+      - "543:543"
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: always
+  app_sneaker:
+    build: ./
+    container_name: 'sneaker'
+    ports:
+      - "8090:3333"
+    environment:
+      - POSTGRES_HOST=postgres_db
+#    volumes:
+#      - ./uploads
+    restart: always

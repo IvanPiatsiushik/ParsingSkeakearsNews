@@ -203,7 +203,12 @@ body{
     }
     .text_a{
         color: white;
-
+    }
+    .header_div{
+        text-decoration: white;
+        display: inline;
+        list-style: none;
+        margin-top: 300px;
     }
 }
 

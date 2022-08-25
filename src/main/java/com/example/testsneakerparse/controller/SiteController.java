@@ -49,7 +49,7 @@ public class SiteController {
         @GetMapping("/")
     public String seeAll(Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
                          @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException {
-//
+
             model.addAttribute("url","http://localhost:3033");
             model.addAttribute("page",page);
             if (paigeRepository.findAll().size()%2==0){

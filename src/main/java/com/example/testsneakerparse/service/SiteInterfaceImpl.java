@@ -9,6 +9,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -37,7 +38,9 @@ public class SiteInterfaceImpl implements SiteInterfase {
 
         for (Element el : elements) {
             List<Site> list1 = siteRepository.findAll();
-            boolean compare = list1.stream().skip(list1.size()-20).anyMatch(x->x.getNamePaige().equals(el.attr("href")));
+            boolean compare = list1.stream()
+//                    .skip(list1.size()-20)
+                    .anyMatch(x->x.getNamePaige().equals(el.attr("href")));
 
             if (compare==false){
                 Site site1 = new Site(el.attr("href"));
@@ -47,6 +50,7 @@ public class SiteInterfaceImpl implements SiteInterfase {
         return null;
     }
 
+    @Scheduled(initialDelay = 10000, fixedRate = 30000000)
     @Override
     public String parsingAllPaige() throws IOException {
 

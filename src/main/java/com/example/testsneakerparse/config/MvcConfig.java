@@ -35,19 +35,22 @@ public class MvcConfig implements WebMvcConfigurer {
         return null;
     }
     @Bean
-    public Page parsingAllInfarmation() {
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    siteInterfase.parsingAllPaige();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        };
-        timer.schedule(task,3000,30000000);
+    public Page parsingAllInfarmation() throws IOException {
+//        Timer timer = new Timer();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                try {
+//                    siteInterfase.parsingAllPaige();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        };
+//        timer.schedule(task,3000,30000000);
+
+                        siteInterfase.parsingAllPaige();
+
         return null;
     }
 }
