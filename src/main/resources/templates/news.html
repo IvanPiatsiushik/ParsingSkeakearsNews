@@ -18,6 +18,7 @@
 <!--</header>-->
 <!--</div>-->
 <section class="section1">
+    <div th:if="${quantity%2==0}">
         <div th:each="el : ${news}"  class="alert alert-info mt-2">
             <div class="containers" >
                 <div class="container1" th:if="${el.id%2==0}">
@@ -35,6 +36,27 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div th:unless="${quantity%2==0}">
+        <div th:each="el : ${news}"  class="alert alert-info mt-2">
+            <div class="containers" >
+                <div class="container1" th:unless="${el.id%2==0}">
+                    <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
+                    <div class="container1.2">
+                        <a th:href="@{/paige/{id}(id=${el.getId()})}" th:text="${el.nameArticle}" style="color: white"></a>
+                    </div>
+                </div>
+                <div class="container2" th:if="${el.id%2==0}">
+                    <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
+                    <!--                    <a th:href="${el.contain}">   <div class="container1.1" th:style="'background-image:url(' + ${el.urlPicture} + ');'"></div></a>-->
+                    <div class="container1.2">
+                        <a th:href="@{/paige/{id}(id=${el.getId()})}" th:text="${el.nameArticle}" style="color: white"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
 <section class="pagination">

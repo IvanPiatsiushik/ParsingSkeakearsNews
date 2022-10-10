@@ -7,6 +7,7 @@ import com.example.testsneakerparse.service.SiteInterfase;
 import com.example.testsneakerparse.entity.Site;
 import com.example.testsneakerparse.repository.SiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,8 +30,8 @@ import java.util.stream.IntStream;
 public class SiteController {
     @Autowired
     private final PaigeRepository paigeRepository;
-
-    private String nameWebSite = "https://sneakernews.com";
+    @Value("${pagination.path}")
+    private String paginationPath;
 
     @Autowired
     private final SiteRepository siteRepository;
@@ -50,22 +51,18 @@ public class SiteController {
     public String seeAll(Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
                          @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException {
 
-            model.addAttribute("url","http://localhost:3033");
+            model.addAttribute("url",paginationPath);
             model.addAttribute("page",page);
-            if (paigeRepository.findAll().size()%2==0){
+
+            Long quantity = paigeRepository.findAll().stream().count();
+
                 Page<Paige> newsPage = (Page<Paige>) paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
                 model.addAttribute("news",newsPage);
                 model.addAttribute("numbers", IntStream.range(0,newsPage.getTotalPages()).toArray());
                 model.addAttribute("newsCurrentPageCount",newsPage.getNumberOfElements());
                 model.addAttribute("getNumber",newsPage.getNumber());
-            }else {
 
-                Page<Paige> newsPage =  paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
-                model.addAttribute("news",newsPage);
-                model.addAttribute("numbers", IntStream.range(0,newsPage.getTotalPages()).toArray());
-                model.addAttribute("newsCurrentPageCount",newsPage.getNumberOfElements());
-                model.addAttribute("getNumber",newsPage.getNumber());
-            }
+                model.addAttribute("quantity",quantity);
                 return "news";
         }
     }

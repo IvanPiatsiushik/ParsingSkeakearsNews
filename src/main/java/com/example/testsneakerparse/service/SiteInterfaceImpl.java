@@ -31,35 +31,51 @@ public class SiteInterfaceImpl implements SiteInterfase {
     }
 
     @Override
-    public String parsingNamePaige(String nameWebSite) throws IOException {
+    public String parsingNamePaige(String nameWebSite)  {
 
-        Document document = Jsoup.connect(nameWebSite).get();
+        Document document = null;
+        try {
+            document = Jsoup.connect(nameWebSite).get();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Elements elements = document.select("div.image-box>a");
 
-        for (Element el : elements) {
-            List<Site> list1 = siteRepository.findAll();
-            boolean compare = list1.stream()
-//                    .skip(list1.size()-20)
-                    .anyMatch(x->x.getNamePaige().equals(el.attr("href")));
+                for (Element el : elements) {
+                Long quantity = siteRepository.findAll().stream().count();
+                List<Site> listNamePage = siteRepository.findAll()
+                        .stream()
+                        .skip(quantity-10)
+                        .collect(Collectors.toList());
 
-            if (compare==false){
-                Site site1 = new Site(el.attr("href"));
-                siteRepository.save(site1);
+                boolean compare = listNamePage.stream()
+                        .anyMatch(x->x.getNamePaige().equals(el.attr("href")));
+
+                if (compare==false){
+                    Site site1 = new Site(el.attr("href"));
+                    siteRepository.save(site1);
+                }
             }
-        }
+        System.out.println("i begin with start");
+
         return null;
     }
-
-    @Scheduled(initialDelay = 10000, fixedRate = 30000000)
     @Override
-    public String parsingAllPaige() throws IOException {
+    public String parsingAllPaige() {
 
-        List<Site> listName = siteRepository.findAll();
+        Long quantity = siteRepository.findAll().stream().count();
+        List<Site> listName = siteRepository.findAll().stream().skip(quantity-14).collect(Collectors.toList());
+
         String elementsName = null;
         for (Site el:listName){
             elementsName=el.getNamePaige();
 
-            Document document = Jsoup.connect(elementsName).get();
+            Document document = null;
+            try {
+                document = Jsoup.connect(elementsName).get();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             Elements elementsMainPicturePaige = document.select("p>img");
             String currentMainPicturePaige = elementsMainPicturePaige.attr("src");
@@ -99,6 +115,9 @@ public class SiteInterfaceImpl implements SiteInterfase {
                 paigeRepository.save(paige2);
             }
         }
+
+
+        System.out.println("Spriiiiiing");
         return null;
     }
     @Override

@@ -23,7 +23,6 @@ public class MvcConfig implements WebMvcConfigurer {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-
                 try {
                     siteInterfase.parsingNamePaige(nameWebSite);
                 } catch (IOException e) {
@@ -31,26 +30,25 @@ public class MvcConfig implements WebMvcConfigurer {
                 }
             }
         };
-        timer.schedule(task,3000,30000000);
+        timer.schedule(task,3000,10000000);
+        System.out.println("i begin with start Spring bean");
         return null;
     }
     @Bean
-    public Page parsingAllInfarmation() throws IOException {
-//        Timer timer = new Timer();
-//        TimerTask task = new TimerTask() {
-//            @Override
-//            public void run() {
-//                try {
-//                    siteInterfase.parsingAllPaige();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        };
-//        timer.schedule(task,3000,30000000);
-
-                        siteInterfase.parsingAllPaige();
-
+    public Page parsingAllInfarmation() {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    siteInterfase.parsingAllPaige();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        timer.schedule(task,15000,10000000);
+        System.out.println("and I also started");
         return null;
     }
 }
