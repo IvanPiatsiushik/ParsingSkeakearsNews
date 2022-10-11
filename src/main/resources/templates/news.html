@@ -4,19 +4,10 @@
 <link rel="stylesheet" href="/static/pagination.css">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>sneaker.com.ru|News in the sneaker world</title>
 </head>
 <body>
-<!--<div class="header_div">-->
-<!--<header class="header">-->
-<!--    <ul class="header_ul">-->
-<!--        <li class="header_li">news</li>-->
-<!--        <li class="header_li">news</li>-->
-<!--        <li class="header_li">news</li>-->
-<!--    </ul>-->
 
-<!--</header>-->
-<!--</div>-->
 <section class="section1">
     <div th:if="${quantity%2==0}">
         <div th:each="el : ${news}"  class="alert alert-info mt-2">
@@ -60,6 +51,9 @@
     </section>
 
 <section class="pagination">
+<!--    <#if page.getTotalPages() gt 7>-->
+<!--    -->
+<!--    </#if>-->
     <div th:fragment="pagination">
         <ul class="pagination_line">
 
