@@ -1,17 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="/static/news.css">
-<link rel="stylesheet" href="/static/pagination.css">
+    <html lang="en">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/news.css" >
+    <link rel="stylesheet" href="/static/pagination.css">
+    <meta name="description" content=""/>
+    <!--    Favicon-->
+    <link rel="icon" type="image/png" href="/static/android-chrome-192x192.png"/>
+
+    <!--    <link rel="apple-touch-icon" sizes="180x180" href="favicon_package/android-chrome-192x192.png">-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="favicon_package/android-chrome-512x512.png">-->
+<!--    <link rel="icon" type="image/png" sizes="16x16" href="favicon_package/favicon-16x16.png">-->
+<!--    <link rel="manifest" href="favicon_package/manifest.json">-->
+<!--    <link rel="mask-icon" href="favicon_package/safari-pinned-tab.svg" color="#5bbad5">-->
+<!--    <meta name="msapplication-TileColor" content="#da532c">-->
+<!--    <meta name="theme-color" content="#ffffff">-->
+    <!--    Favicon-->
 <head>
     <meta charset="UTF-8">
-    <title>sneaker.com.ru|News in the sneaker world</title>
-</head>
-<body>
+    <title>News in the sneaker world</title>
 
+</head>
+<body class="bodyM">
+
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<!--            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">-->
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap" ><use xlink:href="#bootstrap"></use></svg>
+<!--            </a>-->
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="post" th:action="filter">
+                <input type="text" name="filter" th:value="${filter}" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="sectionMain">
 <section class="section1">
-    <div th:if="${quantity%2==0}">
-        <div th:each="el : ${news}"  class="alert alert-info mt-2">
-            <div class="containers" >
+    <div  th:if="${quantity%2==0}">
+        <div th:each="el : ${news}">
+            <div class="cont" >
                 <div class="container1" th:if="${el.id%2==0}">
                     <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
                     <div class="container1.2">
@@ -30,7 +72,7 @@
     </div>
 
     <div th:unless="${quantity%2==0}">
-        <div th:each="el : ${news}"  class="alert alert-info mt-2">
+        <div th:each="el : ${news}">
             <div class="containers" >
                 <div class="container1" th:unless="${el.id%2==0}">
                     <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
@@ -51,26 +93,24 @@
     </section>
 
 <section class="pagination">
-<!--    <#if page.getTotalPages() gt 7>-->
-<!--    -->
-<!--    </#if>-->
     <div th:fragment="pagination">
         <ul class="pagination_line">
 
             <th:block th:each="numberPage : ${numbers}">
                 <div class="container_for_numbers">
                     <li class="page-item" th:if="${numberPage != getNumber }" >
-                        <a class="page-link" th:href="${url + '?page='+ numberPage}" th:text="${numberPage}+1">
+                        <a  th:href="${url + '?page='+ numberPage}" th:text="${numberPage}+1">
                         </a>
                     </li>
 
-                    <li class="page-item" th:if="${numberPage == getNumber }" >
-                        <a class="page-link-current" href="#"   th:text="${numberPage}+1" ></a>
+                    <li class="page-item" th:if="${numberPage == getNumber }" style="background-color: gainsboro">
+                        <a  href="#"   th:text="${numberPage}+1" ></a>
                     </li>
                 </div>
             </th:block>
         </ul>
     </div>
 </section>
+</div>
 </body>
 </html>

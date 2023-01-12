@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 mvn package -Dmaven.test.skip
 echo 'Copy files ...'
 scp ssh -i~/.ssh/vscale \
@@ -6,8 +6,8 @@ scp ssh -i~/.ssh/vscale \
     root@77.223.97.24:/home/ivan/app/jar-files/
 
 echo 'Restart server...'
-ssh -i~/.ssh/vscale root@77.223.97.24 <<EOF
-pgrep java | xargs kill -9
-nohup java -jar testSneakerParse-0.0.1-SNAPSHOT.jar > log.txt &
-EOF
+#ssh -i~/.ssh/vscale root@77.223.97.24 <<EOF
+##pgrep java | xargs kill -9
+#nohup java -jar testSneakerParse-0.0.1-SNAPSHOT.jar &
+#EOF
 echo 'Bye'
