@@ -1,5 +1,6 @@
 package com.example.testsneakerparse.controller;
 
+import com.example.testsneakerparse.TestBean;
 import com.example.testsneakerparse.entity.Paige;
 import com.example.testsneakerparse.repository.PaigeRepository;
 import com.example.testsneakerparse.service.SiteInterfase;
@@ -24,6 +25,8 @@ import java.util.stream.IntStream;
 
 @Controller
 public class SiteController {
+    @Autowired
+    private TestBean testBean;
     @Autowired
     private final  SiteInterfase siteInterfase;
     @Autowired
@@ -53,6 +56,7 @@ public class SiteController {
                          @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException {
 
 
+        testBean.method();
             model.addAttribute("url",paginationPath);
             model.addAttribute("page",page);
 
