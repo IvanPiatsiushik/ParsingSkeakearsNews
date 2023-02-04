@@ -1,0 +1,40 @@
+<div th:fragment="pagination">
+
+    <section class="pagin">
+        <ul class="pagination_line">
+            <div class="container_for_numbers">
+                <li class="page-item" th:if="${getNumber >0}">
+                    <a class="page_" th:href="${url + '?page='+( getNumber - 1)}"><<</a>
+                </li>
+                <li class="page-item" th:if="${getNumber <= 0}">
+                    <a class="page_" href="#"><<</a>
+                </li>
+
+            </div>
+
+            <th:block th:each="numberPage : ${numbers}" th:if="${numberPage<7}">
+                <div class="container_for_numbers">
+                    <li class="page-item" th:if="${numberPage != getNumber}" style="text-decoration: none;">
+                        <a class="page_" th:href="${url + '?page='+ numberPage}" th:text="${numberPage}+1">
+                        </a>
+                    </li>
+                    <li class="page-item" th:if="${numberPage == getNumber}" style="background-color: gainsboro;text-decoration: none">
+                        <a class="page_" href="#"   th:text="${numberPage}+1" ></a>
+                    </li>
+                </div>
+            </th:block>
+
+            <div class="container_for_numbers" th:if="${getNumber <= 8}">
+                <li class="page-item" style="text-decoration: none;">
+                    <a class="page_" th:href="${url + '?page='+( getNumber+1)}">>></a>
+                </li>
+            </div>
+
+            <div class="container_for_numbers" >
+                <li class="page-item" style="text-decoration: none">
+                    <a class="page_" th:text="${newsGet}">12</a>
+                </li>
+            </div>
+        </ul>
+    </section>
+</div>

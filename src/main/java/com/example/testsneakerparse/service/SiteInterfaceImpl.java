@@ -9,8 +9,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Service
+@Primary
 
 public class SiteInterfaceImpl implements SiteInterfase {
 
@@ -116,6 +119,7 @@ public class SiteInterfaceImpl implements SiteInterfase {
 
                         Elements elementsFullTextArticle = document.select("div.sneaker-post-content");
                         String currentFullTextArticle = elementsFullTextArticle.text();
+
 
                         Elements elementsPictureAllPaige = document.select("p>img.alignnone");
                         List<String> stringsPictureList = elementsPictureAllPaige.stream().map(x->x.attr("src")).collect(Collectors.toList());

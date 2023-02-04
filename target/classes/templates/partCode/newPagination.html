@@ -1,0 +1,21 @@
+<div th:fragment="newPagination">
+      <section class="pagination">
+        <div th:fragment="pagination">
+          <ul class="pagination_line">
+
+            <th:block th:each="numberPage : ${numbers}">
+              <div class="container_for_numbers">
+                <li class="page-item" th:if="${numberPage != getNumber }" >
+                  <a  th:href="${url + '?page='+ numberPage}" th:text="${numberPage}+1">
+                  </a>
+                </li>
+
+                <li class="page-item" th:if="${numberPage == getNumber }" style="background-color: gainsboro">
+                  <a  href="#"   th:text="${numberPage}+1" ></a>
+                </li>
+              </div>
+            </th:block>
+          </ul>
+        </div>
+      </section>
+</div>

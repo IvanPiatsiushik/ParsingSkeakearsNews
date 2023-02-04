@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/news.css" >
+    <link rel="stylesheet" href="/static/pagination.css">
+    <meta name="description" content=""/>
+    <!--    Favicon-->
+    <link rel="icon" type="image/png" href="/static/android-chrome-192x192.png"/>
+    <!--    Favicon-->
+      <head>
+        <meta charset="UTF-8">
+        <title>News in the sneaker world</title>
+      </head>
+    <body class="bodyM">
+        <header th:insert="partCode/headerMain :: headerMain"></header>
+        <section class="section1">
+              <div class="container">
+                <div class="row row-cols-2 ">
+                  <div  th:each="el :${news}">
+                          <div class="container1" >
+                            <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
+                            <div class="container1.2">
+                              <a th:href="@{/paige/{id}(id=${el.getId()})}" th:text="${el.nameArticle}" style="color: white"></a>
+                            </div>
+                          </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <footer th:insert="partCode/pagination :: pagination"></footer>
+    </body>
+</html>

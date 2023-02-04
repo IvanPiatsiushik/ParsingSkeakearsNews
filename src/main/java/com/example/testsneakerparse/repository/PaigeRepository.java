@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface PaigeRepository extends JpaRepository<Paige,Long>{
     Page<Paige>findAll(Pageable pageable);
-    @Query(value = "SELECT * FROM  Paige where name_article ILIKE %:filter% ", nativeQuery = true)
-    Page<Paige>findPaigeByNameArticle(@Param("filter")String filter, Pageable pageable);
+    @Query(value = "SELECT * FROM  Paige where name_article ILIKE %:search% ", nativeQuery = true)
+    Page<Paige>findPaigeByNameArticle(@Param("search")String search, Pageable pageable);
 
 }
