@@ -68,7 +68,7 @@ public class SiteController {
                 model.addAttribute("newsCurrentPageCount",newsPage.getNumberOfElements());
                 model.addAttribute("getNumber",newsPage.getNumber());
                 model.addAttribute("quantity",quantity);
-                return "/test/test";
+                return "improveNews";
         }
         @PostMapping("/search")
     public String filter(@Param("search") String search, Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,

@@ -12,21 +12,25 @@
         <title>News in the sneaker world</title>
       </head>
     <body class="bodyM">
+    <div class="main-cont">
         <header th:insert="partCode/headerMain :: headerMain"></header>
         <section class="section1">
-              <div class="container">
+<!--              <div class="container">-->
                 <div class="row row-cols-2 ">
                   <div  th:each="el :${news}">
-                          <div class="container1" >
-                            <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt="" style="width: 323px;height: 226px;"></a>
+                          <div class="col-md-8 mx-auto" >
+                            <a th:href="@{/paige/{id}(id=${el.getId()})}"> <img th:src="${el.mainPicturePaige}" alt=""
+                                                                                style="border-radius: 15px;width: 420px"></a>
                             <div class="container1.2">
-                              <a th:href="@{/paige/{id}(id=${el.getId()})}" th:text="${el.nameArticle}" style="color: white"></a>
+                              <a th:href="@{/paige/{id}(id=${el.getId()})}" th:text="${el.nameArticle}" style="color: white;
+                                                            text-decoration: none"></a>
                             </div>
                           </div>
                   </div>
                 </div>
-              </div>
+<!--              </div>-->
         </section>
-        <footer th:insert="partCode/pagination :: pagination"></footer>
+        <footer th:insert="partCode/pagination :: pagination" style="margin-top: 110px"></footer>
+    </div>
     </body>
 </html>
