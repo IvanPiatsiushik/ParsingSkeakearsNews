@@ -39,7 +39,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
   return http.csrf().disable()
           .authorizeHttpRequests()
-          .requestMatchers("/","/static/**","/search").permitAll()
+          .requestMatchers("/","/static/**","/search","/paige/**").permitAll()
           .and()
           .authorizeHttpRequests()
           .requestMatchers("/all","/welcome").hasAuthority("ADMIN")
