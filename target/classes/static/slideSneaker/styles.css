@@ -1,0 +1,41 @@
+body{
+    overflow: hidden;
+    background: cadetblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cont{
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+}
+.block{
+    height: 80vh;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+    color: white;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 500ms ease-in-out;
+}
+.block h3{
+    position: absolute;
+    font-size: 24px;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+}
+.block.active{
+    flex: 10;
+}
+.block.active h3{
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
