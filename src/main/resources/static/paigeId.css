@@ -11,9 +11,12 @@
 .textAll{
     color: white;
     font-size: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 .textArticle{
-    color: white;
+    margin-top: -120px;
+    color: #eab403;
     font-size: 35px;
 }
 .img{

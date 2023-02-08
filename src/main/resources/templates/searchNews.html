@@ -9,12 +9,12 @@
 <!--    Favicon-->
 <head>
   <meta charset="UTF-8">
-  <title>News in the sneaker world</title>
+  <title th:text="'Result search: '+${filter}"></title>
 </head>
 <body class="bodyM">
         <div class="main-cont">
-        <header th:insert="partCode/headerMain :: headerMain"></header>
-        <section class="section1">
+        <header th:insert="~{partCode/headerMain :: headerMain}"></header>
+        <section class="se">
         <!--  <div class="container" style="padding: 122px">-->
             <div class="row row-cols-2">
               <div  th:each="el :${news1}">
@@ -28,7 +28,9 @@
             </div>
         <!--  </div>-->
         </section>
-        <!--<footer th:insert="partCode/pag1 :: pagination1"></footer>-->
+
+<!--            <footer th:insert="partCode/pagination :: pagination" style="margin-top: 110px"></footer>-->
+            <footer th:insert="partCode/footer :: footer"></footer>
         </div>
 </body>
 </html>

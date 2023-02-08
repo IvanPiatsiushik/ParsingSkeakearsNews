@@ -15,7 +15,6 @@ com/example/testsneakerparse/controller/RestApiTest.class
 com/example/testsneakerparse/TestLazy.class
 com/example/testsneakerparse/controller/RestApiTest$1$1.class
 com/example/testsneakerparse/service/UserInfoDetailService.class
-com/example/testsneakerparse/controller/CreateCollectionsController.class
 com/example/testsneakerparse/config/UserInfoUserDetails.class
 com/example/testsneakerparse/controller/TestController.class
 com/example/testsneakerparse/service/SiteImpl.class

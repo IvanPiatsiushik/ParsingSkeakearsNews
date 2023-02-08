@@ -52,12 +52,8 @@ public class SiteController {
     public String seeAll(Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
                          @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException {
 
-
-        testBean.method();
-
             model.addAttribute("url",paginationPath);
             model.addAttribute("page",page);
-
             Long quantity = paigeRepository.findAll().stream().count();
 
             Page<Paige> newsPage = (Page<Paige>) paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
@@ -74,30 +70,25 @@ public class SiteController {
     public String filter(@Param("search") String search, Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
                          @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException{
 
-
             Page<Paige> newsPageSearch;
             if(search==null && search.isEmpty()){
-//            newsPage = (Page<Paige>) paigeRepository.findAll((Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
                 return "improveNews";
         }
         else {
-
             newsPageSearch = (Page<Paige>) paigeRepository.findPaigeByNameArticle(search,(Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
-
         }
-
-            model.addAttribute("urls",paginationPathFilter);
-            model.addAttribute("page",page);
             model.addAttribute("filter",search);
-
-            Long quantity = paigeRepository.findAll().stream().count();
-
             model.addAttribute("news1",newsPageSearch);
-            model.addAttribute("newsGet",newsPageSearch.getTotalPages());
-            model.addAttribute("numbers", IntStream.range(0,newsPageSearch.getTotalPages()).toArray());
-            model.addAttribute("newsCurrentPageCount",newsPageSearch.getNumberOfElements());
-            model.addAttribute("getNumber1",newsPageSearch.getNumber());
-            model.addAttribute("quantity",quantity);
             return "searchNews";
         }
+
+    @GetMapping("/collection")
+    public String historyBrands(){
+        return "sneaker";
     }
+
+    @GetMapping("/history")
+    public String history(){
+        return "history";
+    }
+ }

@@ -12,14 +12,15 @@
     <!--    Favicon-->
 </head>
 <body class="body">
+    <div class="main-cont">
 
         <header th:insert="partCode/headerMain :: headerMain"></header>
 
         <section>
             <div class="main">
                 <div>
-                    <img class="img" th:src="${paige.get().getMainPicturePaige()}" alt="">
                     <p class="textArticle" th:text="${paige.get.getNameArticle()}"></p>
+                    <img class="img" th:src="${paige.get().getMainPicturePaige()}" alt="">
                     <p  class="textAll" th:text="${paige.get().getFullTextArticle()}"></p>
                     <img class="img" th:src="${paige.get().getPicturePaige1()}" alt="">
                     <img class="img" th:src="${paige.get().getPicturePaige2()}" alt="">
@@ -34,5 +35,7 @@
                 </div>
             </div>
         </section>
+        <footer th:insert="partCode/footer :: footer" style="margin-top: 110px"></footer>
+    </div>
 </body>
 </html>

@@ -5,7 +5,6 @@
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/controller/TestController.java
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/service/U_Service.java
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/entity/UserInfo.java
-/home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/controller/CreateCollectionsController.java
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/service/UserInfoDetailService.java
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/RealLazy.java
 /home/lenovo/IdeaProjects/testSneakerParse/src/main/java/com/example/testsneakerparse/config/BeanConfig.java
