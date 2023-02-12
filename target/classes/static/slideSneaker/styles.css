@@ -39,3 +39,20 @@ body{
     opacity: 1;
     transition: opacity 0.3s ease-in 0.4s;
 }
+.div-btn{
+    background-color: #363535;
+    color: white;
+    display: grid;
+    height: 80vh;
+    width: 170px;
+}
+.bnt{
+
+     border-radius: 10px;
+    margin: auto;
+     /*margin: 10px;*/
+    /*border: 2px solid black;*/
+    background-color: #363535;
+    color: white;
+
+}

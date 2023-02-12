@@ -91,4 +91,5 @@ public class SiteController {
     public String history(){
         return "history";
     }
+
  }
