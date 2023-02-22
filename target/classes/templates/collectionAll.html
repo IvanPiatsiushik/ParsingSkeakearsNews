@@ -12,15 +12,16 @@
 </head>
 <body>
 <header th:insert="~{partCode/headerMain :: headerMain}"></header>
-<div class="div-btn">
-  <div class="bnt">Here you can create yourself collection.</div>
-  <a href="/collection/form" > <button class="bnt" style="text-decoration: none;color: #eab403">Create new collection</button></a>
-  <div class="bnt">To change the image field click on the image</div>
-  <a href="/collection/all" > <button class="bnt" style="text-decoration: none;color: #eab403">Watch all collections</button></a>
-  <div class="bnt">Create new collection</div>
-  <div class="bnt">Create new collection</div>
-</div>
-
+    <div class="m_div">
+        <div class="div-btnn">
+          <div class="bnt">Here you can create yourself collection.</div>
+          <a href="/collection/form" > <button class="bnt" style="text-decoration: none;color: #eab403">Create new collection</button></a>
+          <div class="bnt">To change the image field click on the image</div>
+          <a href="/list" > <button class="bnt" style="text-decoration: none;color: #eab403">Watch all collections</button></a>
+          <div class="bnt">Create new collection</div>
+          <div class="bnt">Create new collection</div>
+        </div>
+    </div>
 
 <div class="cont">
   <section class="se">
@@ -28,7 +29,7 @@
     <div class="row row-cols-2 ">
       <div  th:each="el :${collect}">
         <div class="col-md-8 mx-auto" >
-          <a th:href="@{/collection/{id}(id=${el.getId()})}">
+<!--          <a th:href="@{/collection/{id}(id=${el.getId()})}">-->
 
             <div class="cont">
               <div class="block"
@@ -47,7 +48,7 @@
                    th:style="'background-image:url(' + ${el.getUrl5()} + ');'">
               </div>
             </div>
-          </a>
+<!--          </a>-->
           <div class="container1.2">
             <a th:href="@{/collection/{id}(id=${el.getId()})}" th:text="${el.name}" style="color: white;
                                                             text-decoration: none"></a>
@@ -58,7 +59,7 @@
     <!--              </div>-->
   </section>
 </div>
-<script src="/static/slideSneaker/app.js"></script>
+<script src="/slideSneaker/сollectionAll.js"></script>
 </body>
 
 

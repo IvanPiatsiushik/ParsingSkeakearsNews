@@ -18,4 +18,6 @@ public interface PaigeRepository extends JpaRepository<Paige,Long>{
     @Query(value = "SELECT * FROM  Paige where name_article ILIKE %:search% ", nativeQuery = true)
     Page<Paige>findPaigeByNameArticle(@Param("search")String search, Pageable pageable);
 
+    @Query(value = "SELECT * FROM  Paige where name_article ILIKE %:search% ", nativeQuery = true)
+    List<Paige>findAll(@Param("search")String search);
 }

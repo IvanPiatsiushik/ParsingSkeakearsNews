@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -68,17 +69,30 @@ public class SiteController {
         }
         @PostMapping("/search")
     public String filter(@Param("search") String search, Model model, @RequestParam(value = "size",required = false,defaultValue = "12") Integer size,
-                         @RequestParam (value = "page",required = false,defaultValue = "0") Integer page) throws IOException{
+                         @RequestParam (value = "page",required = false,defaultValue = "0") Integer page
+//                ,@RequestParam String action
+        ) throws IOException{
 
             Page<Paige> newsPageSearch;
             if(search==null && search.isEmpty()){
                 return "improveNews";
         }
-        else {
+//            else if (action.equals("upload")) {
+//                page+=12;
+//                newsPageSearch = (Page<Paige>) paigeRepository.findPaigeByNameArticle(search,(Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
+//            }
+            else {
             newsPageSearch = (Page<Paige>) paigeRepository.findPaigeByNameArticle(search,(Pageable) PageRequest.of(page,size).withSort(Sort.by("id").descending()));
         }
+            // button and ... add articles on paige
+            long countAll = paigeRepository.findAll(search).stream().count();
+//            long countOnPaige = paigeRepository.findAll(search).stream().count();
+            String messageCount = "There are "+page.intValue()+" articles on the page out of "+countAll;
+            model.addAttribute("countPaige",messageCount);
+
             model.addAttribute("filter",search);
             model.addAttribute("news1",newsPageSearch);
+
             return "searchNews";
         }
 

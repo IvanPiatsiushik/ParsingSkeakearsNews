@@ -30,6 +30,13 @@
         </section>
 
 <!--            <footer th:insert="partCode/pagination :: pagination" style="margin-top: 110px"></footer>-->
+            <section style="display: inline-flex";>
+                <form type="submit" name="action" value="upload" method="get">
+                <a href=""><button type="submit" value="Submit">Show more</button></a>
+                <p th:text="${countPaige}" style="color: #aaaaaa">Default</p>
+<!--                </form>-->
+            </section>
+
             <footer th:insert="partCode/footer :: footer"></footer>
         </div>
 </body>

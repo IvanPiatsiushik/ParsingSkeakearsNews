@@ -19,11 +19,11 @@ public class TestController {
     public String welcome(){
         return "Welcome this endpoint is not secure";
     }
-    @GetMapping("/all")
-//    @PreAuthorize("hasAuthority('ROLE_USER')")
-    public String all(){
-        return "Here all product ";
-    }
+//    @GetMapping("/all")
+////    @PreAuthorize("hasAuthority('ROLE_USER')")
+//    public String all(){
+//        return "Here all product ";
+//    }
 
     @PostMapping("/new")
     public String addNewsUser(@RequestParam UserInfo userInfo){

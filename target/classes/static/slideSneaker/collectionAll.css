@@ -1,18 +1,21 @@
 body{
     /*overflow: hidden;*/
     background: #363535;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*height: 100vh;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 .cont{
     width: 100%;
     display: flex;
-    padding: 0 20px;
+    padding: 30px 40px;
+    margin-left: 50px;
 }
 .block{
-    height: 30vh;
+    /*height: 30vh;*/
+    height: 300px;
+    /*width: 300px;*/
     border-radius: 20px;
     margin: 10px;
     cursor: pointer;
@@ -39,22 +42,35 @@ body{
     opacity: 1;
     transition: opacity 0.3s ease-in 0.4s;
 }
-.div-btn{
+.div-btnn{
+
+    /* position: fixed; */
     background-color: #363535;
-    color: white;
+    /* color: white; */
     display: grid;
-    height: 80vh;
-    width: 170px;
+    /* height: 80vh; */
+    /* width: 170px; */
+    justify-content: center;
+    margin-top: 200px;
 }
 .bnt{
 
     border-radius: 10px;
     margin: auto;
+    width: 130px;
     /*margin: 10px;*/
     /*border: 2px solid black;*/
     background-color: #363535;
     color: white;
+    margin: 15px;
 }
 .se{
-    margin-top: 560px;
+    width: 85%;
+    margin-top: 60px;
+}
+.m_div{
+    position: fixed;
+    width: 15%;
+    height: 140vh;
+    background-color: #363535;
 }

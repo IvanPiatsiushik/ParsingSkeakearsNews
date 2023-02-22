@@ -10,47 +10,66 @@
 
 <header th:insert="~{partCode/headerMain :: headerMain}"></header>
 
-    <div class="div-form">
-        <form  action="/collection/form" method="post" enctype="multipart/form-data">
-          <div class="form-group row">
-            <label for="colFormLabelLg1" class="col-sm-2 col-form-label col-form-label-lg">Picture1</label>
-            <div class="col-sm-10">
-              <input type="text" name="url1" class="form-control form-control-lg" id="colFormLabelLg1" placeholder="enter image address">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelLg2" class="col-sm-2 col-form-label col-form-label-lg">Picture2</label>
-            <div class="col-sm-10">
-              <input type="text"  name="url2" class="form-control form-control-lg" id="colFormLabelLg2" placeholder="enter image address">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelLg3" class="col-sm-2 col-form-label col-form-label-lg">Picture3</label>
-            <div class="col-sm-10">
-              <input type="text" name="url3" class="form-control form-control-lg" id="colFormLabelLg3" placeholder="enter image address">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelLg4" class="col-sm-2 col-form-label col-form-label-lg">Picture4</label>
-            <div class="col-sm-10">
-              <input type="text" name="url4" class="form-control form-control-lg" id="colFormLabelLg4" placeholder="enter image address">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelLg5" class="col-sm-2 col-form-label col-form-label-lg">Picture5</label>
-            <div class="col-sm-10">
-              <input type="text" name="url5" class="form-control form-control-lg" id="colFormLabelLg5" placeholder="enter image address">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="colFormLabelLg5" class="col-sm-2 col-form-label col-form-label-lg">Name</label>
-            <div class="col-sm-10">
-              <input type="text" name="name" class="form-control form-control-lg" id="colFormLabelLgName" placeholder="enter name collections">
-            </div>
-          </div>
-          <button type="submit" id="submit" class="btn btn-success" >Add collection</button>
-        </form>
-    </div>
+<!--    <div class="div-form">-->
+<!--        <form  action="/collection/form" method="post" enctype="multipart/form-data">-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg1" class="col-sm-2 col-form-label col-form-label-lg">Picture1</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text" name="url1" class="form-control form-control-lg" id="colFormLabelLg1" placeholder="enter image address">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg2" class="col-sm-2 col-form-label col-form-label-lg">Picture2</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text"  name="url2" class="form-control form-control-lg" id="colFormLabelLg2" placeholder="enter image address">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg3" class="col-sm-2 col-form-label col-form-label-lg">Picture3</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text" name="url3" class="form-control form-control-lg" id="colFormLabelLg3" placeholder="enter image address">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg4" class="col-sm-2 col-form-label col-form-label-lg">Picture4</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text" name="url4" class="form-control form-control-lg" id="colFormLabelLg4" placeholder="enter image address">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg5" class="col-sm-2 col-form-label col-form-label-lg">Picture5</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text" name="url5" class="form-control form-control-lg" id="colFormLabelLg5" placeholder="enter image address">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group row">-->
+<!--            <label for="colFormLabelLg5" class="col-sm-2 col-form-label col-form-label-lg">Name</label>-->
+<!--            <div class="col-sm-10">-->
+<!--              <input type="text" name="name" class="form-control form-control-lg" id="colFormLabelLgName" placeholder="enter name collections">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <button type="submit" id="submit" class="btn btn-success" >Add collection</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<div class="container" style="color: white">
+  <h2>Create new collection</h2>
+  <p>To create your shoe collection, add links to 5 pictures of your favorite shoes and give it a name .</p>
+      <form  action="/collection/form" method="post" enctype="multipart/form-data">
+        <input type="text" name="url1"    placeholder="Enter the url of your image 1" class="form-control mt-5"><br>
+<!--          <div th:text="${error_url1}" style="color: #d42126" class="text-danger" ></div>-->
+        <input type="text" name="url2" placeholder="Enter the url of your image 2"  class="form-control"><br>
+<!--          <div th:text="${error_url2}" style="color: #d42126" class="text-danger" ></div>-->
+        <input type="text" name="url3"   placeholder="Enter the url of your image 3" class="form-control"><br>
+<!--          <div th:text="${error_url3}" style="color: #d42126" class="text-danger" ></div>-->
+        <input type="text" name="url4"   placeholder="Enter the url of your image 4" class="form-control"><br>
+<!--          <div th:text="${error_url4}" style="color: #d42126" class="text-danger" ></div>-->
+        <input type="text" name="url5"   placeholder="Enter the url of your image 5" class="form-control" ><br>
+<!--          <div th:text="${error_url5}" style="color: #d42126" class="text-danger" ></div>-->
+        <textarea name="name" placeholder="Name collection" class="form-control" ></textarea><br>
+          <div th:text="${error}" style="color: #d42126" class="text-danger" ></div>
+        <button type="submit" id="submit" class="btn btn-success">Add collection</button>
+      </form>
+</div>
 <footer th:insert="partCode/footer :: footer" style="margin-top: 50px"></footer>
 
  <script src="/static/form/app.js"></script>

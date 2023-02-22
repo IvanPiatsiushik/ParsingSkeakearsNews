@@ -1,10 +1,15 @@
 const bloks = document.querySelectorAll('.block')
 
 for (const block of bloks){
-    block.addEventListener('click',()=>{
+    block.addEventListener('mouseover',()=>{
 
         removeFieldActive()
         block.classList.add('active')
+    })
+    block.addEventListener('mouseout',()=>{
+
+        removeFieldActive()
+        block.classList.remove('active')
     })
 }
 
